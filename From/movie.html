@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Anime list
+    </title>
+
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<header>
+    <div class="logo">Anime List </div>
+    <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#movies">Movies</a></li>
+        <li><a href="#onging">Onging</a></li>
+        <li><a href="#content">Content</a></li>
+    </ul>
+
+    <div class="btn">Sign</div>
+</header>
+
+
+<!-- Cover start -->
+<div class="cover">
+   <div class="parent">
+    <img src="./img/peakpx.jpg" alt="" id="cov">
+
+    <div class="text"> <div class="vio">Violet <br> Evergarden</div>
+
+        <div class="watch">Watch</div>
+    </div>
+
+   </div>
+</div>
+<!-- Cover end -->
+
+
+<img src="" alt="">
+
+
+<!-- movies list start -->
+
+
+
+
+
+<div class="box-parent" id="movies">
+
+    <div class="studio">Studio Ghibli Movies list</div>
+    
+  
+    <div class="box-continer">
+        <div class="box">
+            
+        </div>
+
+        <div class="box">
+         
+        </div>
+        <div class="box">
+           
+        </div>
+        <div class="box">
+          
+        </div>
+        <div class="box">
+           
+        </div>
+        <div class="box">
+            
+        </div>
+        <div class="box">
+          
+        </div>
+        <div class="box">
+            
+        </div>
+
+        <div class="box">
+          
+        </div>
+
+        <div class="box">
+    
+        </div>
+        <div class="box">
+            
+        </div>
+        <div class="box">
+            
+        </div>
+        <div class="box">
+            
+        </div>
+        <div class="box">
+            
+        </div>
+        <div class="box">
+          
+        </div>
+        <div class="box">
+         
+        </div>
+    </div> 
+</div> 
+
+ 
+
+<!-- movies list end -->
+
+<!-- Onging start -->
+
+<div class="box-parent" id="onging">
+
+    <div class="studio">Onging</div>
+    
+  
+    <div class="box-continer">
+        <div class="box">
+
+        </div>
+
+        <div class="box">
+          
+        </div>
+        <div class="box">
+           
+        </div>
+        <div class="box">
+         
+        </div>
+       
+    </div> 
+</div> 
+
+<!-- Onging end -->
+
+<!-- email from start -->
+<div class="form" id="content">
+    <h2>Content Me</h2>
+    <form action="#">
+        <input type="email"  id="" placeholder=" Email enter ..." class="email" >
+        <input type="button" class="submit" value="Send">
+    </form>
+</div>
+<!-- email from end -->
+
+
+<!-- footer start -->
+<div class="socies-continer">
+    <div class="s-text">You can share</div>
+    <div class="media">
+        <div><i class="fa-brands fa-facebook"></i></div>
+        <div><i class="fa-brands fa-telegram"></i></div>
+        <div><i class="fa-brands fa-x-twitter"></i></div>
+        <div><i class="fa-brands fa-instagram"></i></div>
+    
+
+    </div>
+</div>
+<a href="" target="_blank" ></a>
+<!-- footer end -->
+
+</body>
+<script src="/Javascript/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () { 
+
+        $(".cover").slideDown(1000);
+
+$(".cover").slideDown(1500);
+
+
+
+        $(window).scroll(function () {
+         let scrollPosition = $(window).scrollTop();
+         
+
+       
+     
+        })
+
+
+ 
+           window.onscroll = () => {
+
+           let box = document.querySelectorAll(".box");
+
+           box.forEach((boxer) => {
+            let windowtop = window.scrollY  + 800 ,
+                boxtop = boxer.offsetTop,
+                boxheight = boxer.offsetHeight;
+
+                console.log( boxer ,windowtop, boxtop , boxheight);
+
+                if (windowtop >= boxtop && windowtop < boxtop + boxheight ) {
+                 boxer.classList.add("show");
+
+              
+                 
+                } else if (window.scrollY < 800){
+                    boxer.classList.remove("show");
+
+                }
+
+       
+           })
+        
+
+           }
+          
+   
+
+
+   
+
+     })
+    
+   
+      
+    
+
+let movieList = [
+
+{name: 'Castle in the Sky',
+ url: './movies list/Castle in the Sky.jpg'},
+
+{name: 'From Up on Poppy Hill',
+ url: './movies list/From Up on Poppy Hill.jpg'},
+
+{name: 'When Marnie Was There',
+ url: './movies list/When Marnie Was There.jpg'},
+
+{name: 'Grave of the Fireflies',
+ url: './movies list/Grave of the Fireflies.jpg'},
+
+{name: "Howl's Moving Castle",
+ url: "./movies list/Howl's Moving Castle.jpg"},
+
+{name: "Kiki's Delivery Service",
+ url: "./movies list/Kiki's Delivery Service.jpg"},
+
+{name: 'My Neighbor Totoro',
+ url: './movies list/My Neighbor Totoro.jpg'},
+
+{name: 'Nausicaä of the Valley of the Wind',
+ url: './movies list/Nausicaä of the Valley of the Wind.jpg'},
+
+{name: 'Only Yesterday',
+ url: './movies list/Only Yesterday.jpg'},
+
+{name: 'Ponyo',
+ url: './movies list/Ponyo.jpg'},
+
+{name: 'Porco Rosso',
+ url: './movies list/Porco Rosso.jpg'},
+
+{name: 'Princess mononoke',
+ url: './movies list/Princess mononoke.jpg'},
+
+{name: 'Spirited Away',
+ url: './movies list/Spirited Away.jpg'},
+
+{name: 'Tales From Earthsea',
+ url: './movies list/Tales From Earthsea.jpg'},
+
+{name: 'The Cat Returns',
+ url: './movies list/The Cat Returns.jpg'},
+
+
+{name: 'The Tale of the Princess Kaguya',
+ url: './movies list/The Tale of the Princess Kaguya.jpg'},
+
+
+{name: 'img1',
+ url: './movies list/img1.jpg'},
+
+ 
+{name: "Doraemon Nobita's Earth Symphony",
+ url: "./movies list/Doraemon-Nobita's_Earth_Symphony.jpg"},
+
+ 
+{name: 'My hero academia movie 4 anime visual 1',
+ url: './movies list/My-hero-academia-movie-4-anime-visual-1.jpg'},
+
+{name: 'GAo2Vi bEAAqmxb',
+ url: './movies list/GAo2Vi-bEAAqmxb.jpg'},
+
+]
+
+
+
+
+let link = document.getElementsByClassName("img");
+let box = document.getElementsByClassName("box");
+let img = document.getElementsByClassName("img");
+
+
+
+let name;
+let url;
+
+
+for (let i = 0 ; i < movieList.length ; i++) {
+    name = movieList[i].name ;
+    url = movieList[i].url;
+    name = name.replaceAll("-", " ");
+ name = name.replaceAll("_", " ");
+
+
+         
+
+box[i].innerHTML = ` <div class="img">
+   
+    <div class="imgcontiner">
+<a href="${url}" target="_blank" >  
+    <img src="${url}">
+</a>
+<a href = "#" > <div class=" abso non">Download</div> </a>
+    </div></div>
+ <h3>${name}</h3>
+ <span>1hours 30minus || Fansty</span>
+`
+      
+      
+       
+         
+
+}
+
+let abso = document.getElementsByClassName("abso");
+
+
+
+for (let i = 0; i < box.length; i++) {
+    box[i].addEventListener("mouseover", function () {
+    abso[i].style.display = "block"
+})
+
+
+box[i].addEventListener("mouseout", function () {
+    abso[i].style.display = "none"
+})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
