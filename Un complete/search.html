@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <style>
+        body {
+            background-color: beige;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+.mother {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    
+    
+
+}
+
+.search {
+    width: 80vh;
+    box-shadow: 2px 2px 20px rgb(17, 16, 16);
+}
+
+input {
+    width: 100%;
+    border:  none;
+    padding: 5px 10px;
+    font-size: 20px;
+  
+    outline: none;
+}
+
+.parent {
+background-color: rgb(71, 71, 70);
+    /* padding: 8px 10px; */
+    border: 1px solid wheat;
+    color: aliceblue;
+    display: flex;
+    height: 7vh;
+    padding: 0 10px;
+   justify-content: space-between;
+   align-items: center;
+
+
+}
+
+.parent img {
+    height: 100%;
+}
+
+.img-div {
+    background-color: aquamarine;
+    height: 100%;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- <img src="../From/movies list/" alt="" srcset=""> -->
+<div class="mother">
+    <div class="search"><input type="text"></div>
+    <div class="resault">
+      
+    </div>
+</div>
+</body>
+
+<script>
+
+    let select = x => document.querySelector(x);
+
+    let search = select("input"),
+    resault = select(".resault"),
+    see = -1,
+   
+    box = new Array();
+    
+  
+
+    let strr = "";
+
+//     if(box.length == 5) {
+//     box = [];
+//     console.log("Hello");
+// }
+        
+
+let movieList = [
+
+{name: 'Castle in the Sky',
+ url: './movies list/Castle in the Sky.jpg'},
+
+{name: 'From Up on Poppy Hill',
+ url: './movies list/From Up on Poppy Hill.jpg'},
+
+{name: 'When Marnie Was There',
+ url: './movies list/When Marnie Was There.jpg'},
+
+{name: 'Grave of the Fireflies',
+ url: './movies list/Grave of the Fireflies.jpg'},
+
+{name: "Howl's Moving Castle",
+ url: "./movies list/Howl's Moving Castle.jpg"},
+
+{name: "Kiki's Delivery Service",
+ url: "./movies list/Kiki's Delivery Service.jpg"},
+
+{name: 'My Neighbor Totoro',
+ url: './movies list/My Neighbor Totoro.jpg'},
+
+{name: 'Nausicaä of the Valley of the Wind',
+ url: './movies list/Nausicaä of the Valley of the Wind.jpg'},
+
+{name: 'Only Yesterday',
+ url: './movies list/Only Yesterday.jpg'},
+
+{name: 'Ponyo',
+ url: './movies list/Ponyo.jpg'},
+
+{name: 'Porco Rosso',
+ url: './movies list/Porco Rosso.jpg'},
+
+{name: 'Princess mononoke',
+ url: './movies list/Princess mononoke.jpg'},
+
+{name: 'Spirited Away',
+ url: './movies list/Spirited Away.jpg'},
+
+{name: 'Tales From Earthsea',
+ url: './movies list/Tales From Earthsea.jpg'},
+
+{name: 'The Cat Returns',
+ url: './movies list/The Cat Returns.jpg'},
+
+
+{name: 'The Tale of the Princess Kaguya',
+ url: './movies list/The Tale of the Princess Kaguya.jpg'},
+
+
+{name: 'img1',
+ url: './movies list/img1.jpg'},
+
+ 
+{name: "Doraemon Nobita's Earth Symphony",
+ url: "./movies list/Doraemon-Nobita's_Earth_Symphony.jpg"},
+
+ 
+{name: 'My hero academia movie 4 anime visual 1',
+ url: './movies list/My-hero-academia-movie-4-anime-visual-1.jpg'},
+
+{name: 'GAo2Vi bEAAqmxb',
+ url: './movies list/GAo2Vi-bEAAqmxb.jpg'},
+
+]
+
+
+
+let arr;
+
+
+    search.addEventListener("keyup" , function (event) {
+
+
+
+
+box.push(event.target.value);
+
+
+// it is clear box
+if(box[box.length -2] !== box[box.length -1] && see != -1) {
+see = -1;
+
+box = [];
+
+}
+
+
+        
+
+
+
+
+
+
+        
+
+        // it is clear search card on key up event
+        resault.innerHTML = "";
+
+
+    // if input.value = undefined then it is not search card
+    if(event.target.value == "" || event.target.value == " ") {
+        return
+    }
+ 
+  
+ 
+
+      
+        let str = event.target.value;
+
+// it is filter and it is manin the search
+arr = movieList.filter((fit) => {
+    
+
+    return fit.name.toLocaleLowerCase().includes(str.toLowerCase())
+}) 
+
+for(let i = 0; i < arr.length; i ++) {
+    resault.innerHTML += ` <div class="parent">
+        <div>${arr[i].name}</div> <div class= "img-div"><img src="${arr[i].url}" alt=""></div>
+       </div>`
+}
+
+// it is arrow up and down do it is work
+if (event.key === "ArrowUp" || event.key === "ArrowDown" ) {
+
+
+
+  
+
+    choose(event.key , arr.length - 1);
+    return
+    
+    }
+
+    })
+
+
+
+  let choose = (x , y) => {
+ 
+   
+  
+   
+    
+    if (x === "ArrowDown") {
+       
+  
+   
+       
+
+        if(see == y) {
+     see = -1;
+     
+     return
+        
+       
+    }
+
+
+    if (see == arr.length )  {
+        see = -1;
+        
+       
+    }
+
+    see++;
+       
+
+resault.children[see].style.backgroundColor = "rgb(74, 74, 221 )"
+    } else if (x === "ArrowUp" ) {
+        
+   
+       if (see == 0) {
+        see = y + 1;
+      
+        return
+       }
+
+       if(see == -1) {
+    see = arr.length;
+   
+    
+  
+}
+
+
+            see--;
+     
+   
+
+       
+  
+       
+    } 
+
+   
+      
+    resault.children[see].style.backgroundColor = "blue"
+    
+   
+  }
+
+</script>
+</html>

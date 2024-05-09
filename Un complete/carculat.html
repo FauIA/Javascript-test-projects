@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: bisque;
+            box-sizing: border-box;
+
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .continer {
+           
+        /* margin: 100px auto; */
+            background-color: aquamarine;
+            width: 350px;
+            height: auto;
+            padding:  20px;
+            border-radius: 5px;
+        }
+.box input , select {
+   margin-top: 8px;
+}
+        .box {
+            margin-bottom:  10px;
+        }
+
+
+       
+        input , select{
+            display: block;
+            width: 94%;
+        border-radius: 6px;
+            outline: none;
+            border: none;
+            padding: 5px;
+           
+        }
+
+        input {
+            padding: 10px;
+
+        }
+        select {
+            padding: 8px 5px;
+            width: 100%;
+        }
+        .title {
+            text-align: center;
+            font-size: 25px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+
+        .btn {
+            background-color: black;
+            color: aliceblue;
+            font-size: 20px;
+            text-align: center;
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            box-shadow: 2px 2px 10px rgb(121, 115, 115);
+            border-radius: 6px;
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            box-shadow: none;
+        }
+        .answer {
+            background-color: black;
+            padding: 10px;
+            color: aliceblue;
+            font-size: 20px;
+            box-shadow: 1px 1px 10px sandybrown;
+            border-radius: 5px;
+            margin-bottom: 20px;
+
+        }
+        .box  div {
+            color: red;
+            font-size: 15px;
+            padding: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="continer">
+    <div class="title">Calculator Project</div>
+<div class="answer" id="answer">0</div>
+  <div class="box">
+    <label for="">FirstNmber</label>
+    <input type="number" placeholder="Please write number only">
+    <div class="error">Please give me first number</div>
+  </div>
+ <div class="box">
+    <label for="">SecondNumber</label>
+    <input type="number" name="" id=""  placeholder="Please write number only">
+    <div class="error">Please give me second number</div>
+ </div>
+
+ <div class="box">
+    <label for="">Operators</label>
+     <select id="operator">
+        <option value="empty">Choose ......</option>
+        <option value="plus">+</option>
+        <option value="minus">-</option>
+        <option value="martiply">*</option>
+        <option value="divtype">/</option>
+     </select>
+     <div class="error">Please give me operator</div>
+
+ </div>
+
+     <div class="btn" id="btn">Fixed</div>
+</div>
+
+</body>
+
+<script>
+    let dgc = (x) => {
+        return document.getElementsByClassName(x)
+    }
+
+    let dgq = (x) => {
+        return document.querySelectorAll(x)
+    }
+
+    let id = (x) => {
+        return document.getElementById(x);
+    }
+
+
+    let btn = id("btn");
+    let fnumber = dgq('input')[0];
+    let snumber = dgq('input')[1];
+    let oper = id("operator");
+    let ans = id("answer")
+    let errors = dgc("error");
+
+
+    let firsterror = errors[0];
+    let seconderror = errors[1];
+    let operatorerror = errors[2];
+
+
+
+    let er;
+    let err;
+    let errr;
+
+        
+
+let arr = new Array;
+
+
+  fnumber.addEventListener("change", function (event ) {
+   
+    arr[0] = (event.target.value);
+  
+    });
+
+
+
+
+
+snumber.addEventListener("change", function (event) {
+   
+    arr[1] = (event.target.value);
+})
+
+oper.addEventListener("blur" , function (event) {
+arr[2] = event.target.value;
+})
+
+
+
+
+btn.addEventListener("click", function () {
+
+
+
+   
+
+
+let a = parseInt(arr[0], 10);
+let b = parseInt(arr[1], 10);
+let c = arr[2];
+
+if (fnumber.value === "") {
+  er = true;
+} else {
+    er = false;
+}
+
+if (snumber.value === "") {
+   err = true;
+} else {
+    err = false;
+} 
+
+if (oper.value == "empty") {
+    errr = true;
+} else {
+    errr = false;
+}
+
+
+
+if (fnumber.value == ""|| snumber == "") {
+ans.innerText = 0;
+} else {
+    switch (c) {
+    case "plus":
+    ans.innerText = a + b;
+
+        break;
+        
+        case "minus":
+        ans.innerText = a - b;
+      break;
+
+        case "martiply":
+    
+
+    ans.innerText = a * b;
+
+        break;
+      
+       
+        
+        case "divtype":
+        ans.innerText = a / b;
+        break;
+    default: 
+    
+    
+
+
+    
+ 
+
+   
+}
+}
+
+
+if (er == !false) {
+    firsterror.style.display = "block";
+} else if (er == false) {
+    firsterror.style.display = "none";
+};
+
+if (err == !false) {
+    seconderror.style.display = "block";
+} else if (err == false) {
+    seconderror.style.display = "none";
+};
+
+if (errr == !false) {
+    operatorerror.style.display = "block";
+} else if (errr == false) {
+    operatorerror.style.display = "none";
+};
+
+
+
+
+})
+
+
+
+</script>
+</html>
+
+

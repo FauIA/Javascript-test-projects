@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+        .mother {
+            margin:  0 auto;
+            border-radius: 5px;
+            max-width: 600px;
+            background-color: #646060;
+            text-align: center;
+            padding: 15px 10px;
+            box-shadow: 2px 2px 10px white;
+
+           
+        }
+        .continer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 30px;
+        }
+
+        .continer button {
+            width: 100px;
+            height: 100px;
+            border: none;
+            border-radius: 50px;
+            background-color: rgb(78, 76, 76 , 0.5);
+            font-size: 2rem;
+           
+        }
+body * {
+    box-sizing: border-box;
+    color: rgb(240, 232, 232);
+}
+        body {
+            display: flex;
+            background-color: rgb(59, 54, 54);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+         
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mother input {
+            width: 100%;
+            font-size: 30px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(59, 54, 54);
+            font-size: 3rem;
+            color: white;
+         
+        }
+
+        button:hover {
+            background-color:  rgb(78, 76, 76 , 0.7);
+        }
+
+        button:active {
+            background-color:  rgb(78, 76, 76 , 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="mother">
+        <input type="text"  id="display" readonly>
+        <div class="continer">
+
+            <button value="" onclick="mrc()" >MRC</button>
+            <button value="" onclick="m('-')">M-</button>
+            <button value="" onclick="m('+')">M+</button>
+            <button value="" onclick="show('/')">/</button>
+
+
+         <button value="" onclick="show(7)">7</button>
+         <button value="" onclick="show(8)">8</button>
+         <button value="" onclick="show(9)">9</button>
+         <button value="" onclick="show('*')">*</button>
+         <button value="" onclick="show(4)">4</button>
+         <button value="" onclick="show(5)">5</button>
+         <button value="" onclick="show(6)">6</button>
+         <button value="" onclick="show('-')">-</button>
+
+        
+         <button value="" onclick="show(1)">1</button>
+         <button value="" onclick="show(2)">2</button>
+         <button value="" onclick="show(3)">3</button>
+         <button value="" onclick="show('+')">+</button>
+
+         <button value="" id="ac">Ac</button>
+         <button value="" onclick="show('.')">.</button>
+         <button value="" onclick="show(0)">0</button>
+         <button value=""  id="equal">=</button>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById("display");
+        let ac = document.getElementById("ac");
+        let equal = document.getElementById("equal");
+        let bo;
+        let number = 1;
+       
+        let show = (num) => {
+            if (bo == true) {
+                display.value = "";
+                bo = false;
+            }
+
+          
+            display.value += num;
+
+          
+        }
+try {
+    equal.addEventListener("click" , function () {
+        display.value = eval(display.value);
+    })
+    
+} catch (error) {
+    display.value = "Error"
+    alert(error)
+}
+ac.addEventListener("click" , function () {
+    display.value = "";
+    mtch = "";
+
+})
+
+let mtch = "";
+let mon;
+
+function m (x) {
+
+
+display.value = eval(display.value);
+mon = eval(display.value);
+
+
+if (number == 1) {
+
+    mtch += mon + x;
+}else if(number == 2) {
+    mtch += mon ;
+} else {
+    mtch += x + mon;
+}
+
+
+
+number++;
+        
+   bo = true;
+
+   
+
+ 
+ 
+  
+}
+
+
+function mrc () {
+display.value = eval(mtch);
+mtch = "";
+}
+
+
+    </script>
+</body>
+</html>

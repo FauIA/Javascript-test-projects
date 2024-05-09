@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+   
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+   table img {
+        width: 150px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    table {
+        border-collapse: collapse;
+  width: 150vh; 
+  margin: 0 auto;
+    }
+
+     th , td {
+        text-align: center;
+     }
+
+thead tr {
+    background-color: rgb(55, 189, 111);
+ 
+    font-size: 20px;
+    border-radius: 5px;
+
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+th {
+    padding: 10px 10px;
+}
+
+.price, .rating {
+    min-width:  100px;
+}
+
+.detail{
+    width: 150vh;
+    height: 30vh;
+    margin: 50px auto;
+    border: 1px solid black;
+  
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+
+.line {
+    display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+height: 100%;
+margin-left: 2vh;
+}
+
+.line div {
+    background-color: beige;
+    padding: 4px 7px;
+    font-size: 1.5rem;
+
+}
+.detail img {
+    height: 100%;
+}
+
+.detail {
+    display: none;
+}
+
+   </style>
+</head>
+<body>
+    
+       <div class="detail" id="detail">
+      
+       </div> 
+  
+    <table>
+        <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th class="price">Price</th>
+        <th class="rating">Rating</th>
+        <th>Image</th>
+      </tr>
+        </thead>
+
+        <tbody id="continer">
+           
+        </tbody>
+    </table>
+    <!-- <div class="continer" id="continer"> -->
+      
+    </div>
+    
+</body>
+<script>
+
+    let continer = document.getElementById("continer");
+    let info = document.getElementById("detail")
+    let url;
+
+    let arr = new Array();
+
+    fetch ("https://fakestoreapi.com/products")
+    .then(ans => ans.json())
+    .then(json =>  arr = json)
+    .then(arr => {
+        for (let i = 0; i < arr.length ; i++) {
+        url = arr[i].image;
+        console.log(url);
+       continer.innerHTML += `
+       <tr onclick = "fun(${arr[i].id})">
+                <td>${arr[i].id}</td>
+                <td>${arr[i].title}</td>
+                <td>$${arr[i].price}</td>
+                <td>${arr[i].rating.rate}</td>
+                <td><<a href="${url}" target="_blank" > <img src="${url}" alt="${arr[i].title}">  </a></td>
+                
+                </tr>`
+        }
+    })
+
+   function fun(id) {
+        fetch ("https://fakestoreapi.com/products/" + id )
+        .then(another => another.json())
+        .then( json => info.innerHTML = `  <img src="${json.image}" alt=""> 
+       <div class="line">
+        <div class="detail-name">Name: ${json.title}</div>
+        <div class="detail-price">Price: ${json.price}</div>
+        <div class="detail-des">Des: ${json}</div> 
+       </div>` )
+    }
+
+    info.style.display = "block"
+
+
+// error is up
+</script>
+</html>

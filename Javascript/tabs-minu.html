@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        body * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            user-select: none;
+            cursor: pointer;
+        }
+        .mother {
+            display: grid;
+          grid-template-columns: repeat(4 , auto);
+          text-align: center;
+          width: 100%;
+          position: relative;
+            background-color: antiquewhite;
+           
+
+        }
+
+        .parent { 
+           
+            max-width: 70vw;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .mother div {
+            padding: 10px;
+            font-size: large;
+            font-weight: 600;
+            background-color: rgb(214, 226, 43);
+        }
+
+        .line {
+          width: 0px;  
+            height: 5px;
+    background-color: aqua;
+    transition: all 0.6s ease-in-out;
+    position: absolute;
+    bottom: 0;
+        }
+
+        .content {
+           position: absolute; 
+            background-color: rgb(61, 60, 59);
+            height: 70vh;
+            width: 100%;
+            padding: 5px 10px;
+         
+        }
+
+        .content div {
+            font-size: 40px;
+            color: aliceblue;
+            display: none;
+           
+            
+        }
+     
+
+     
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="mother">
+            <div class="home">Home</div>
+            <div class="text">Text</div>
+            <div class="vedio">Vedio</div>
+            <div class="new">New</div>
+    
+        </div>
+<div class="line"></div>
+
+<div class="content">
+   
+    <div> Hi I am home</div>
+    <div> Hi I am Text</div>
+    <div> Hi I am vedio</div>
+    <div> Hi I am New</div>
+</div>
+    </div>
+  
+</body>
+
+<script>
+    let qu = (x) => {
+        return document.querySelector(x);
+    }
+
+    let content = qu(".content");
+    
+    let children = content.children;
+
+    let line = qu('.line');
+
+
+    let arr = [".home" , ".text"  , ".vedio" , ".new" ];
+
+    let show = (x) => {
+        for(let i = 0; i < children.length; i++) {
+        
+        children[i].style.display = 'none';
+        
+        }
+        children[x].style.display = "block";
+    }
+
+ 
+   
+
+    for (let i = 0; i < arr.length ; i++) {
+       let item = qu(arr[i]);
+     
+       item.addEventListener("click" , function (event) {
+    line.style.width = item.offsetWidth + "px";
+        line.style.transform = `translateX(${item.offsetLeft}px)`;
+        let key = event.target.textContent;
+      
+
+
+      switch (key) {
+        case "Home":
+            console.log("Home");
+            show(0)
+            break;
+        case "Text":
+
+        show(1)
+        break;
+
+        case "Vedio":
+            
+        show(2)
+        break;
+
+        case "New":
+            
+            show(3)
+            break;
+
+       
+      }
+       })
+    }
+</script>
+</html>

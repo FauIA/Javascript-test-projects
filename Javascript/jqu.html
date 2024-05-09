@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            display: none;
+        }
+        button {
+            margin: 100px;
+            border: none;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Thesting JQuery</h1>
+    <button type="submit">Click Me</button>
+</body>
+<script src="./jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $("button").click(function() {
+            $("h1").css("display", "block")
+        $("h1").animate({
+            top: 1000,
+            fontSize: 100,
+            Color: "red",
+        }, "1000" ,function() {})
+
+        } );
+      
+
+
+    })
+    
+       
+    //    document.getElementsByTagName("h1")[0].style.fontSize = 50 + "px";
+  
+</script>
+</html>
